@@ -1,5 +1,4 @@
-const data = `
-Ethical discussion
+const data = `Ethical discussion
 is based on reference points and criteria that make a dialog possible. e.g. This switch is safe (possible) vs I don't like this switch (not possible, it does not have the ground for proper discussion).
 
 Values 
@@ -56,7 +55,6 @@ Second formulation of the categorical imperative: Act as to treat humanity, whet
 Universality principle
 First formulation of the categorical imperative: Act only on that maxim which you can at the same time will that it should become a universal law.
 
-
 Prima facie
 are the applicable norms, unless they are overruled by other more important norms that become evident when we take everything into consideration.
 
@@ -68,7 +66,6 @@ An ethical theory that focuses on the nature of the acting person. This theory i
 
 Practical wisdom
 The intellectual virtue that enables one to make the right choice for action. It consists in the ability to choose the right mean between two vices.
-
 
 Care ethics
 An ethical theory that emphasizes the importance of relationships, and which holds that the development of morals does not come about by learning general moral principles.
