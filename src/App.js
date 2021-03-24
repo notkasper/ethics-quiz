@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -27,8 +27,14 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 12,
   },
   fixedHeight: {
-    minHeight: '300px',
+    minHeight: '150px',
     padding: '1rem',
+  },
+  correct: {
+    backgroundColor: 'green',
+  },
+  incorrect: {
+    backgroundColor: 'red',
   },
 }));
 
@@ -51,10 +57,14 @@ const getRandomItemWithBlacklist = (items, blacklist) => {
 const Item = (props) => {
   const { item, options, next } = props;
   const classes = useStyles();
+  const [selected, setSelected] = useState(null);
 
-  const onClick = (selected) => {
-    const correct = selected.value === item.value;
-    next(correct);
+  const onClick = (newSelected) => {
+    setSelected(newSelected);
+    const correct = newSelected.value === item.value;
+    setTimeout(() => {
+      next(correct);
+    }, 1000);
   };
 
   return (
@@ -73,12 +83,20 @@ const Item = (props) => {
       </Grid>
       <Grid container spacing={2} style={{ marginTop: '2rem' }}>
         {options.map((option) => {
+          let theClass = null;
+          if (selected && selected.value === item.value && selected.value === option.value) {
+            theClass = classes.correct;
+          }
+          if (selected && selected.value !== item.value && selected.value === option.value) {
+            theClass = classes.incorrect;
+          }
+
           return (
-            <Grid item xs={3} onClick={() => onClick(option)}>
+            <Grid item xs={6} onClick={() => onClick(option)} className={theClass}>
               <Card>
                 <CardActionArea>
                   <Paper className={classes.fixedHeight}>
-                    <Typography variant="h5">{option.value}</Typography>
+                    <Typography>{option.value}</Typography>
                   </Paper>
                 </CardActionArea>
               </Card>
